@@ -1,4 +1,5 @@
 from picamera2 import Picamera2, Preview
+from PIL import Image
 import time
 import numpy as np
 from model import ObjectDetection
@@ -16,6 +17,11 @@ start_time = time.time()
 while True:
     buffer = picam2.capture_arrays()
     buffer = np.array(buffer[0][0])
+    image = buffer[:,:,:3]
+
+    pil_img = Image.fromarray(image)
+
+    print(image.shape, pil_img)
 
     result = detector.predict(buffer)
     print(result)
