@@ -33,7 +33,7 @@ class Printer:
 			accusation = accusations[crime]
 			fine = fines[crime]
 
-			self.printer.set(align='left', bold=True, custom_size=True, width=2, height=2, density=8)
+			""" self.printer.set(align='left', bold=True, custom_size=True, width=2, height=2, density=8)
 			self.printer.textln("be seeing you")
 			self.printer.set(align='left', bold=True)
 			self.printer.textln(f"Tatbestand: {crime}")
@@ -47,7 +47,23 @@ class Printer:
 			self.printer.textln(fine)
 			self.printer.set(align='left', bold=True)
 			self.printer.textln("Wichtige Hinweise:")
-			self.printer.image("footer.png")
+			self.printer.image("footer.png") """
+
+			self.printer.image("footer_ud.png")
+			self.printer.textln("Wichtige Hinweise:")
+			self.printer.set(align='left', bold=True)
+			self.printer.textln(fine)
+			self.printer.set(align='left', bold=False)
+			self.printer.textln("Verwarnungsgeldhoehe:")
+			self.printer.set(align='left', bold=True)
+			self.printer.textln(accusation)
+			self.printer.set(align='left', bold=False)
+			self.printer.textln("Tatvorwurf:")
+			self.printer.set(align='left', bold=True)
+			self.printer.textln(f"Tatbestand: {crime}")
+			self.printer.set(align='left', bold=True)
+			self.printer.textln("be seeing you")
+			self.printer.set(align='left', bold=True, custom_size=True, width=2, height=2, density=8)
 		except Exception as e:
 			print(e)
 			print(["Print error"])
