@@ -7,14 +7,18 @@ import sys
 import cv2
 from printer import Printer
 
+### CONFIG ###
+
 MIN_DETECTION_FRAMES = 3
 MIN_WAIT_FRAMES = 15
 CONF_THRESH = 0.35
-DO_PRINT = False
+DO_PRINT = True
 
 LABEL_THRESHOLDS = {
 	"finger": 0.5,
 }
+
+### END CONFIG ###
 
 detection_frames = 0
 wait_frames = 0
