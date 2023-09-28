@@ -12,6 +12,10 @@ MIN_WAIT_FRAMES = 15
 CONF_THRESH = 0.35
 DO_PRINT = False
 
+LABEL_THRESHOLDS = {
+	"finger": 0.5,
+}
+
 detection_frames = 0
 wait_frames = 0
 last_detection = None
@@ -43,7 +47,9 @@ while True:
     best_score = res['scores'][best_index]
     best_label = res['classes'][best_index]
 
-    if best_score > CONF_THRESH:
+    threshold = LABEL_THRESHOLDS.get(best_label, CONF_THRESH)
+
+    if best_score > threshold:
         print(f"{frame_count}: Found {best_label} with score {best_score}")
         if last_detection == best_label and wait_frames > MIN_WAIT_FRAMES:
             detection_frames += 1
