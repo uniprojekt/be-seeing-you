@@ -141,8 +141,9 @@ def detect_objects(frame1, frame_count):
             #print(label)
     classes = [labels[int(x)] for x in classes]
     cv2.putText(frame,f'Frame: {frame_count}',(30,50),cv2.FONT_HERSHEY_SIMPLEX,1,(255,255,0),2,cv2.LINE_AA)
-    name=f"frames/frame{frame_count}.jpg"
-    #cv2.imwrite(name, frame)
+    
+    name=f"frames/frame{frame_count % 100}.jpg"
+    cv2.imwrite(name, frame)
     #cv2.imshow('Object detector', frame)
 
     return {'boxes': boxes, 'classes': classes, 'scores': scores }

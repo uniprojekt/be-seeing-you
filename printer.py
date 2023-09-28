@@ -50,20 +50,22 @@ class Printer:
 			self.printer.image("footer.png") """
 
 			self.printer.image("footer_ud.png")
+			self.printer.set(align='left', bold=True, flip=True)
 			self.printer.textln("Wichtige Hinweise:")
-			self.printer.set(align='left', bold=True, flip=True)
+			self.printer.set(align='left', bold=False, flip=True)
 			self.printer.textln(fine)
-			self.printer.set(align='left', bold=False, flip=True)
-			self.printer.textln("Verwarnungsgeldhoehe:")
 			self.printer.set(align='left', bold=True, flip=True)
-			self.printer.textln(accusation)
+			self.printer.textln("Verwarnungsgeldhoehe:")
 			self.printer.set(align='left', bold=False, flip=True)
+			self.printer.textln(accusation)
+			self.printer.set(align='left', bold=True, flip=True)
 			self.printer.textln("Tatvorwurf:")
 			self.printer.set(align='left', bold=True, flip=True)
 			self.printer.textln(f"Tatbestand: {crime}")
-			self.printer.set(align='left', bold=True, flip=True)
-			self.printer.textln("be seeing you")
 			self.printer.set(align='left', bold=True, custom_size=True, width=2, height=2, density=8, flip=True)
+			self.printer.textln("be seeing you")
+			self.printer.text("\n\n\n\n\n\n\n")
+			
 		except Exception as e:
 			print(e)
 			print(["Print error"])
